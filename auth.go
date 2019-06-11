@@ -278,6 +278,8 @@ type AuthorizationTransport struct {
 
 // RoundTrip implements the RoundTripper interface.
 func (t *AuthorizationTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	// q-header-list必须带有host头部
+	req.Header.Add("Host", req.Host)
 	// 使用预签名授权 URL 时跳过添加 Authorization header 的步骤
 	if req.URL.Query().Get("sign") == "" {
 		req = cloneRequest(req) // per RoundTrip contract
