@@ -1,4 +1,4 @@
-module git.code.oa.com/storage-ops/go-cos
+module github.com/jdlindu/go-cos
 
 require (
 	github.com/google/go-querystring v1.0.0
